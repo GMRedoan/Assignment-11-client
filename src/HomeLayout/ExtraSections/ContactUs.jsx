@@ -1,4 +1,4 @@
-import logo from "../assets/bglogo.png";
+import logo from "../../assets/bglogo.png";
 import { FaPhoneAlt, FaClock, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 

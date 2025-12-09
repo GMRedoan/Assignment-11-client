@@ -1,5 +1,5 @@
 import { FiCheckCircle, FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router";
+
 
 const OurMission2 = () => {
     return (
@@ -68,12 +68,35 @@ const OurMission2 = () => {
                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                         <div className="modal-box">
 
-                             <p className="py-4">Press ESC key or click the button below to close</p>
+                            <section className="p-6 bg-base-200">
+                                <div>
+                                    <div className="text-primary font-semibold tracking-[3px] uppercase mb-3 flex items-center gap-2">
+                                        <span className="inline-block h-[3px] w-10 bg-primary rounded"></span>
+                                        About Us
+                                    </div>
+
+                                    <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                                        Dedicated to Providing Reliable & Trusted Services
+                                    </h2>
+                                    <p className="border-b border-b-gray-300 mb-5"></p>
+
+                                    <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
+                                        Our organization was founded with one goal: to provide safe, transparent,
+                                        and dependable services that people can trust. We combine expertise,
+                                        modern technology, and strong teamwork to deliver solutions that truly
+                                        make a difference. With a commitment to quality and community impact,
+                                        we continue to grow while staying true to our core values.
+                                    </p>
+                                </div>
+                                <div>
+                                    <img src="https://i.ibb.co.com/Qj6rYMPY/blood.jpg" alt="" />
+                                </div>
+                            </section>
 
                             <div className="modal-action">
                                 <form method="dialog">
-                                     <button className="btn btn-primary text-white
-                                     ">Close</button>
+                                    <button className="btn btn-primary text-white
+                                       ">Close</button>
                                 </form>
                             </div>
                         </div>

@@ -1,33 +1,36 @@
 import { Outlet, useLocation } from 'react-router';
 import Navbar from '../HomeLayout/Navbar/Navbar';
 import Footer from '../HomeLayout/Footer/Footer';
-import { use, useEffect } from 'react';
+import { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Authentication/AuthContex';
 import Loading from '../Shared/Loading';
 
 const Root = () => {
     const { loading } = use(AuthContext);
-    // const [loading, setLoading] = useState(true)
     const location = useLocation();
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        const timer = setTimeout(() => {
+            setShowLoader(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [loading])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, [location.pathname])
 
-//   const showLoader = loading || navigation.state === 'loading';
-
-
-    if (loading) {
-        return <Loading></Loading>
+     if (loading || showLoader) {
+        return <Loading />
     }
+
     return (
         <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-            {/* {
-                showLoader && <Loading></Loading>
-            } */}
+            <Navbar />
+            <Outlet />
+            <Footer />
         </div>
     );
 };

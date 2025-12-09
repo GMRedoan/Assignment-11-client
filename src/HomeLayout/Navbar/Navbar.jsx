@@ -3,7 +3,8 @@ import logo from '../../assets/logo.png'
 import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../Authentication/AuthContex';
 import Swal from 'sweetalert2';
-
+import { IoSearch } from 'react-icons/io5';
+ 
 const Navbar = () => {
     const { user, logout } = use(AuthContext)
     const navigate = useNavigate()
@@ -53,7 +54,8 @@ const Navbar = () => {
                 </Link>
             </div>
             <nav className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 space-x-10 ">
+                <ul className="menu menu-horizontal px-1 space-x-8
+                 ">
                     <div className='flex items-center gap-1 text-lg '>
                         <NavLink to='/'><li>Home</li></NavLink>
                     </div>
@@ -63,6 +65,10 @@ const Navbar = () => {
                     <div className='flex items-center gap-1 text-lg'>
                         <NavLink to='funding'><li>Funding</li></NavLink>
                     </div>
+                    <div className='flex items-center gap-1 text-lg'>
+                       <li>  <NavLink to='search'><IoSearch className='w-10'/></NavLink> </li>
+                    </div>
+
                 </ul>
             </nav>
             {
@@ -80,7 +86,6 @@ const Navbar = () => {
                             tabIndex={0}
                             className="dropdown-content menu bg-base-100 rounded-xl shadow-lg border border-primary w-36 py-4">
                             <button
-                                // onClick={handleLogout}
                                 className="font-semibold text-[18px] cursor-pointer hover:text-blue-500">Dashboard
                             </button>
 
