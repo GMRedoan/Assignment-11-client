@@ -85,9 +85,9 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="dropdown-content menu bg-base-100 rounded-xl shadow-lg border border-primary w-36 py-4">
-                            <button
-                                className="font-semibold text-[18px] cursor-pointer hover:text-blue-500">Dashboard
-                            </button>
+                            <Link to='/dashboard/profile'
+                                className="font-semibold text-[18px] cursor-pointer pl-2 hover:text-blue-500">Dashboard
+                            </Link>
 
                             <div className="divider my-1"></div>
                             <li>

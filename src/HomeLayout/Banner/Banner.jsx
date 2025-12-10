@@ -28,9 +28,9 @@ const Banner = () => {
             Join as a donor
           </Link>
 
-          <button className="btn btn-sm md:btn-md text-black px-8 py-3 rounded-md font-semibold hover:btn-primary hover:text-white">
+          <Link to='/search' className="btn btn-sm md:btn-md text-black px-8 py-3 rounded-md font-semibold hover:btn-primary hover:text-white">
             Search Donors
-          </button>
+          </Link>
         </div>
       </div>
     </section>

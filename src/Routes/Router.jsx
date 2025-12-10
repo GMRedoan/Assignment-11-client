@@ -5,9 +5,10 @@ import Login from "../Authentication/Login";
 import Registration from "../Authentication/Registration";
 import Error from "../Shared/Error";
 import Search from "../Pages/Search";
-import PrivateRoutes from "./PrivateRoutes";
 import DonationReq from "../Pages/DonationReq";
 import Loading from "../Shared/Loading";
+import DashBoard from "../DashBoardLayout/DashBoard";
+import Profile from "../Pages/Dashboard/DonorDashBoard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -31,15 +32,23 @@ export const router = createBrowserRouter([
       },
       {
         path: '/donation',
-        element: <PrivateRoutes>
-          <DonationReq></DonationReq>
-        </PrivateRoutes>
+        element: <DonationReq></DonationReq>
       },
       {
         path: '/search',
         element: <Search></Search>,
         loader: () => fetch('http://localhost:3000/districts_upazilas'),
         hydrateFallbackElement: <Loading></Loading>
+      }
+    ]
+  },
+  {
+    path:'/dashboard',
+    element: <DashBoard></DashBoard>,
+    children:[
+      {
+        path:'profile',
+        element: <Profile></Profile>
       }
     ]
   },

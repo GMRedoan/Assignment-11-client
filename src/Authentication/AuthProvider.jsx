@@ -2,56 +2,72 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { AuthContext } from "./AuthContex";
 import { auth } from "../Firebase/firebase.config";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [role, setRole] = useState();
+    const [loading, setLoading] = useState(true);
+    const [donors, setDonors] = useState([]);
 
-    // sign in 
+    // Load donors
+    useEffect(() => {
+        fetch("http://localhost:3000/users")
+            .then((res) => res.json())
+            .then((data) => setDonors(data))
+        //   .catch((err) => console.error(err));
+    }, []);
+
+    // create user
     const createUser = (email, password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
-            .finally(() => setLoading(false));
-    }
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password).finally(() =>
+            setLoading(false)
+        );
+    };
 
-    // log in
+    // login user
     const Login = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-            .finally(() => setLoading(false));
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password).finally(() =>
+            setLoading(false)
+        );
+    };
 
-    }
-
-    // log out
+    // logout
     const logout = () => {
-        setLoading(true)
-        return signOut(auth)
-            .finally(() => setLoading(false));
+        setLoading(true);
+        return signOut(auth).finally(() => setLoading(false));
+    };
 
-    }
-
-    // preserve the user
+    // preserve logged user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
-            setUser(CurrentUser)
-            setLoading(false)
-        })
-        return () => {
-            unsubscribe()
-        }
-    }, [])
+            setUser(CurrentUser);
+            setLoading(false);
+        });
+        return () => unsubscribe();
+    }, []);
 
-    // show info
+    // update user profile
     const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser, profile)
-            .then(() => {
-                setUser({
-                    ...auth.currentUser,
-                    ...profile
-                })
+        return updateProfile(auth.currentUser, profile).then(() => {
+            setUser({
+                ...auth.currentUser,
+                ...profile,
+            });
+        });
+    };
+
+    // get user role
+    useEffect(() => {
+        if (!user) return
+        axios
+            .get(`http://localhost:3000/role/${user.email}`)
+            .then((res) => {
+                setRole(res.data.role)
             })
-    }
+    }, [user]);
 
     const authData = {
         loading,
@@ -60,13 +76,12 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         updateUserProfile,
-        logout
+        logout,
+        donors,
+        role
     }
-    return (
-        <AuthContext value={authData}>
-            {children}
-        </AuthContext>
-    );
+
+    return <AuthContext value={authData}>{children}</AuthContext>;
 };
 
 export default AuthProvider;

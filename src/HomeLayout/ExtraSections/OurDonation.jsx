@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import OurDonationCard from './OurDonationCard';
 import { use } from 'react';
 
-const donationPromise = fetch('donation.json').then(res => res.json())
+const donationPromise = fetch('/donation.json')
+.then(res => res.json())
 const OurDonation = () => {
     const donations = use(donationPromise)
     return (

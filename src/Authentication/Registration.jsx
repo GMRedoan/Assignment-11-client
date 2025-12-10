@@ -40,35 +40,26 @@ const Registration = () => {
             notify("Password and confirm Password should be similar.")
             return
         }
-        // console.log({ name, email, district, upazila, password, bloodGroup })
         const res = await axios.post(`https://api.imgbb.com/1/upload?&key=a61b7f4958aebb9ca0065ed632a5e5b9`, { image: file }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
         const photo = res.data.data.display_url
+        const formData = {
+            name, email, bloodGroup, district, upazila, photo, status:'active', role:'donor'
+        }
         createUser(email, password)
             .then((result) => {
-                // const newUser = {
-                //     name,
-                //     email,
-                //     photoURL
-                // }
-                // create user in the database
-                // fetch('https://rent-wheels-server-jet.vercel.app/users', {
-                //     method: 'POST',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(newUser)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log('data after user save', data)
-                //     })
-
-
-                updateUserProfile({
+                // save users data in db
+                axios.post('http://localhost:3000/users', formData)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+                 updateUserProfile({
                     displayName: name,
                     photoURL: photo
                 })
@@ -213,10 +204,13 @@ const Registration = () => {
 
 
                                 </div>
+                                <div className='md:col-span-3 flex justify-center '>
                                 <button
                                     type='submit'
                                     className="btn bg-primary mt-4 text-white hover:bg-secondary 
-                                font-semibold">Register Now</button>
+                                font-semibold">Register Now
+                                </button>
+                                </div>
                             </fieldset>
                             <p className='pt-2'>Already have an Account ! <Link state={location.state} to='/login'><span className='text-blue-500 font-semibold hover:underline'>Login Now</span></Link></p>
                         </form>
