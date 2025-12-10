@@ -24,7 +24,7 @@ const Banner = () => {
         </p>
 
         <div className="mt-10 flex justify-center gap-5">
-          <Link to='registration' className="btn btn-sm md:btn-md btn-primary px-8 py-3 rounded-md font-semibold border-0 hover:bg-white hover:text-black">
+          <Link to='registration' className="btn btn-sm md:btn-md btn-primary px-8 py-3 text-white rounded-md font-semibold border-0 hover:bg-white hover:text-black">
             Join as a donor
           </Link>
 

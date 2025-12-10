@@ -1,24 +1,32 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from './AuthContex';
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Registration = () => {
+    const { districts, upazilas } = useLoaderData()
     const { createUser, updateUserProfile, setUser } = use(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const notify = (msg) => toast.error(msg);
     const [error, setError] = useState('')
     const [showPass, setShowPass] = useState(false)
-    const handleRegister = (e) => {
+    const [showPass2, setShowPass2] = useState(false)
+    const handleRegister = async (e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
-        const photoURL = form.photoURL.value
+        const avatar = form.Avatar
+        const file = avatar.files[0]
         const email = form.email.value
+        const bloodGroup = form.bloodGroup.value
+        const district = form.district.value
+        const upazila = form.upazila.value
         const password = form.password.value
+        const confirmPassword = form.confirmPassword.value
         const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         setError('')
 
@@ -27,7 +35,18 @@ const Registration = () => {
             notify("Password should be at least 6 character with Small and Capital letters.")
             return
         }
-
+        if (password !== confirmPassword) {
+            setError("Password and confirm Password should be similar.")
+            notify("Password and confirm Password should be similar.")
+            return
+        }
+        // console.log({ name, email, district, upazila, password, bloodGroup })
+        const res = await axios.post(`https://api.imgbb.com/1/upload?&key=a61b7f4958aebb9ca0065ed632a5e5b9`, { image: file }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        const photo = res.data.data.display_url
         createUser(email, password)
             .then((result) => {
                 // const newUser = {
@@ -51,7 +70,7 @@ const Registration = () => {
 
                 updateUserProfile({
                     displayName: name,
-                    photoURL: photoURL
+                    photoURL: photo
                 })
                 Swal.fire({
                     title: "Registration Successful. Welcome to Red Care",
@@ -78,45 +97,122 @@ const Registration = () => {
                         Register now and begin your great job.
                     </p>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <div className="card bg-base-100 w-full max-w-4xl shrink-0 shadow-2xl">
                     <div className="card-body">
                         <form onSubmit={handleRegister}>
                             <fieldset className="fieldset">
-                                {/* name */}
-                                <label>Name</label>
-                                <input type="text" className="input w-full"
-                                    name='name'
-                                    required
-                                    placeholder="Name" />
 
-                                {/* photo */}
-                                <label>Photo URL</label>
-                                <input type="text" className="input w-full"
-                                    required
-                                    name='photoURL'
-                                    placeholder="Photo URL" />
+                                <div className='md:grid grid-cols-2 gap-10'>
+                                    <div>
+                                        {/* name */}
+                                        <label>Name</label>
+                                        <input type="text" className="input w-full"
+                                            name='name'
+                                            required
+                                            placeholder="Name" />
 
-                                {/* email */}
-                                <label>Email</label>
-                                <input type="email" className="input w-full"
-                                    name='email'
-                                    required
-                                    placeholder="Email" />
+                                        {/* photo */}
+                                        <label>Avatar</label>
+                                        <input type="file" className="input w-full"
+                                            required
+                                            name='Avatar'
+                                            placeholder="Avatar" />
 
-                                {/* password */}
-                                <label>Password</label>
-                                <div className='relative'>
-                                    <input type={showPass ? 'text' : 'password'}
-                                        name='password'
-                                        required
-                                        className="input w-full" placeholder="Password" />
-                                    <p
-                                        onClick={() => setShowPass(!showPass)}
-                                        className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass ? <FaEyeSlash /> : <FaEye />}</p>
+                                        {/* email */}
+                                        <label>Email</label>
+                                        <input type="email" className="input w-full"
+                                            name='email'
+                                            required
+                                            placeholder="Email" />
+
+                                        {/* password */}
+                                        <label>Password</label>
+                                        <div className='relative'>
+                                            <input type={showPass ? 'text' : 'password'}
+                                                name='password'
+                                                required
+                                                className="input w-full" placeholder="Password" />
+                                            <p
+                                                onClick={() => setShowPass(!showPass)}
+                                                className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass ? <FaEyeSlash /> : <FaEye />}</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+                                        {/* BLOOD GROUP */}
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text font-semibold">Blood Group</span>
+                                            </label>
+
+                                            <select name='bloodGroup'
+                                                required
+                                                className="select select-bordered w-full" defaultValue="">
+                                                <option value="" disabled>Select Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </select>
+                                        </div>
+
+                                        {/* DISTRICT */}
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text font-semibold">District</span>
+                                            </label>
+
+                                            <select name='district'
+                                                required className="select select-bordered w-full" defaultValue="">
+                                                <option value="" disabled>Select District</option>
+                                                {
+                                                    districts.map(district => <option key={district.id}>{district.name}</option>
+                                                    )
+                                                }
+                                            </select>
+                                        </div>
+
+                                        {/* UPAZILA */}
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text font-semibold">Upazila</span>
+                                            </label>
+
+                                            <select name='upazila'
+                                                required className="select select-bordered w-full" defaultValue="">
+                                                <option value="" disabled>Select Upazila</option>
+                                                {
+                                                    upazilas.map(upazila => <option key={upazila.id}>{upazila.name}</option>
+                                                    )
+                                                }
+                                            </select>
+                                        </div>
+
+                                        {/*confirm password */}
+                                        <label>Confirm Password</label>
+                                        <div className='relative'>
+                                            <input type={showPass2 ? 'text' : 'password'}
+                                                name='confirmPassword'
+                                                required
+                                                className="input w-full" placeholder="Retype Password" />
+                                            <p
+                                                onClick={() => setShowPass2(!showPass2)}
+                                                className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass2 ? <FaEyeSlash /> : <FaEye />}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                {
-                                    error && <p className='text-red-500'>{error}</p>
-                                }
+                                <div className='text-center pt-4'>
+                                    {
+                                        error && <p className='text-red-500 font-semibold'>{error}</p>
+                                    }
+
+
+                                </div>
                                 <button
                                     type='submit'
                                     className="btn bg-primary mt-4 text-white hover:bg-secondary 

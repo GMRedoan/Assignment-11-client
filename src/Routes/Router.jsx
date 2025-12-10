@@ -7,6 +7,7 @@ import Error from "../Shared/Error";
 import Search from "../Pages/Search";
 import PrivateRoutes from "./PrivateRoutes";
 import DonationReq from "../Pages/DonationReq";
+import Loading from "../Shared/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +25,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/registration',
-        element: <Registration></Registration>
+        element: <Registration></Registration>,
+        loader: () => fetch('http://localhost:3000/districts_upazilas'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/donation',
@@ -34,7 +37,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/search',
-        element: <Search></Search>
+        element: <Search></Search>,
+        loader: () => fetch('http://localhost:3000/districts_upazilas'),
+        hydrateFallbackElement: <Loading></Loading>
       }
     ]
   },
