@@ -61,7 +61,9 @@ export const router = createBrowserRouter([
       },
       {
         path: 'create-donation-request',
-        element: <CreateDonationReq></CreateDonationReq>
+        element: <CreateDonationReq></CreateDonationReq>,
+        loader: () => fetch('http://localhost:3000/districts_upazilas'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/dashboard',

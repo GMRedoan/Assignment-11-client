@@ -69,7 +69,7 @@ const Profile = () => {
         setEditable(false);
     };
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+        <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-6 md:mt-35">
 
             {/* Header */}
             <div className="flex justify-between items-center mb-6">

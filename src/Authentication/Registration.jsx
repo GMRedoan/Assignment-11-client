@@ -134,21 +134,6 @@ const Registration = () => {
                                             required
                                             placeholder="Email" />
 
-                                        {/* password */}
-                                        <label>Password</label>
-                                        <div className='relative'>
-                                            <input type={showPass ? 'text' : 'password'}
-                                                name='password'
-                                                required
-                                                className="input w-full" placeholder="Password" />
-                                            <p
-                                                onClick={() => setShowPass(!showPass)}
-                                                className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass ? <FaEyeSlash /> : <FaEye />}</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div>
                                         {/* BLOOD GROUP */}
                                         <div className="form-control">
                                             <label className="label">
@@ -169,6 +154,10 @@ const Registration = () => {
                                                 <option value="O-">O-</option>
                                             </select>
                                         </div>
+
+                                    </div>
+
+                                    <div>
 
                                         {/* DISTRICT */}
                                         <div className="form-control">
@@ -202,6 +191,18 @@ const Registration = () => {
                                             </select>
                                         </div>
 
+                                        {/* password */}
+                                        <label>Password</label>
+                                        <div className='relative'>
+                                            <input type={showPass ? 'text' : 'password'}
+                                                name='password'
+                                                required
+                                                className="input w-full" placeholder="Password" />
+                                            <p
+                                                onClick={() => setShowPass(!showPass)}
+                                                className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass ? <FaEyeSlash /> : <FaEye />}</p>
+                                        </div>
+
                                         {/*confirm password */}
                                         <label>Confirm Password</label>
                                         <div className='relative'>
@@ -213,19 +214,17 @@ const Registration = () => {
                                                 onClick={() => setShowPass2(!showPass2)}
                                                 className='absolute top-3.5 right-5 cursor-pointer z-10'>{showPass2 ? <FaEyeSlash /> : <FaEye />}</p>
                                         </div>
+                                        <div className='mt-2'>
+                                            {
+                                                error && <p className='text-red-500 font-semibold'>{error}</p>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='text-center pt-4'>
-                                    {
-                                        error && <p className='text-red-500 font-semibold'>{error}</p>
-                                    }
-
-
-                                </div>
+                                 </div>
                                 <div className='md:col-span-3 flex justify-center '>
                                     <button
                                         type="submit"
-                                        className="btn bg-primary mt-4 text-white hover:bg-secondary font-semibold"
+                                        className="btn bg-primary text-white hover:bg-secondary font-semibold"
                                         disabled={uploading}
                                     >
                                         {uploading ? "Please Wait.." : "Register Now"}

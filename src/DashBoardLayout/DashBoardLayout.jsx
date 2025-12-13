@@ -36,7 +36,7 @@ const DashBoardLayout = () => {
                 <Aside openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
 
             </div>
-            <div className="mx-4 mt-4 col-span-5 md:col-span-4 md:mt-40">
+            <div className="mx-4 col-span-5 md:col-span-4 ">
                 <Outlet />
             </div>
         </div>

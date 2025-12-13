@@ -77,7 +77,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="m-1">
                             <img
                                 className="w-[42px] h-[42px] rounded-full cursor-pointer ring-2 ring-primary/40 hover:ring-primary transition"
-                                src={userInfo.photo}
+                                src={userInfo?.photo}
                                 alt="profile"
                             />
                         </div>

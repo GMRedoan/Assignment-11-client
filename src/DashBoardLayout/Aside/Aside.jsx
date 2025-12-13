@@ -1,13 +1,34 @@
-import { NavLink, Link } from "react-router";
+import { NavLink, Link, useNavigate } from "react-router";
 import { FaHome, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { LuGitPullRequestDraft } from "react-icons/lu";
 import { IoCreateOutline } from "react-icons/io5";
 import logo from '../../assets/bglogo.png';
 import { ImCross } from "react-icons/im";
+import { MdDashboard } from "react-icons/md";
+import { use } from "react";
+import { AuthContext } from "../../Authentication/AuthContex";
+import Swal from "sweetalert2";
 
 const Aside = ({ openSidebar, setOpenSidebar }) => {
+    const { logout } = use(AuthContext)
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                Swal.fire({
+                    title: "You Logged Out Successfully",
+                    icon: "success",
+                    confirmButtonColor: "#F91617"
+                });
+                navigate('/')
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
     const menuItems = [
-        { path: "/dashboard", label: "Dashboard", icon: <FaHome /> },
+        { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
         { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
         { path: "/dashboard/my-donation-requests", label: "My Donation Req", icon: <LuGitPullRequestDraft /> },
         { path: "/dashboard/create-donation-request", label: "Create Donation Req", icon: <IoCreateOutline /> },
@@ -22,8 +43,7 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                 ></div>
             )}
 
-            <aside className={`fixed md:static top-0 left-0 min-h-screen bg-base-200 shadow-2xl p-5 w-64 
-                transform transition-transform duration-300 z-50
+            <aside className={`fixed md:static top-0 left-0 bg-base-200 shadow-2xl p-5 transform transition-transform duration-300 z-50 h-full
                 ${openSidebar ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
                 `}>
                 <button
@@ -55,15 +75,19 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                         </li>
                     ))}
 
-                    <li className="mt-110 md:mt-70">
+                    <li className="mt-100 md:mt-60">
                         <Link
-                             
-                             onClick={() => window.location.href = '/'}
+                            onClick={() => window.location.href = '/'}
                             className="flex items-center gap-3 py-2 px-4 rounded-md text-primary font-semibold hover:bg-base-200"
                         >
-                            <FaSignOutAlt className="text-lg" /> Home
+                            <FaHome className="text-lg" /> Home
                         </Link>
-                    </li>
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-3 py-2 px-4 rounded-md text-primary font-semibold hover:bg-base-200"><FaSignOutAlt
+                             /> Log Out
+                        </button>
+                     </li>
                 </ul>
             </aside>
         </>

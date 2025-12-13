@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
-    const { Login } = use(AuthContext)
+    const { login } = use(AuthContext)
     const [error, setError] = useState('');
     const [showPass, setShowPass] = useState(false);
     const navigate = useNavigate();
@@ -18,7 +18,8 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
         setError('')
-        Login(email, password)
+        console.log('clicked');
+        login(email, password)
             .then(() => {
                 Swal.fire({
                     title: "LogIn Successful. Welcome to Red Care",
