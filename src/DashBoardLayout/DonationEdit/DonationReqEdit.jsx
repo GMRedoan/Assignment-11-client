@@ -25,7 +25,7 @@ const DonationReqEdit = () => {
         const res = await axiosInstance.patch(`/donationReqDetails/${info._id}`,
             data)
 
-        if (res.data.modifiedCount === 0) {
+        if (res.data.modifiedCount == 0) {
             return Swal.fire({
                 title: "Nothing is changed",
                 icon: "info",

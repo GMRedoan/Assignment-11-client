@@ -1,7 +1,7 @@
 import { NavLink, Link, useNavigate } from "react-router";
-import { FaHome, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaUser, FaSignOutAlt, FaUsers } from "react-icons/fa";
 import { LuGitPullRequestDraft } from "react-icons/lu";
-import { IoCreateOutline } from "react-icons/io5";
+import { IoCreateOutline, IoDocuments } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 import { MdDashboard } from "react-icons/md";
 import { use } from "react";
@@ -11,7 +11,7 @@ import logo from "../../assets/bglogo.png";
 import { AuthContext } from "../../Authentication/AuthContex";
 
 const Aside = ({ openSidebar, setOpenSidebar }) => {
-    const { logout } = use(AuthContext);
+    const { logout, userInfo } = use(AuthContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -27,16 +27,25 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
             .catch(console.log);
     };
 
-    const menuItems = [
+    const DonorMenuItems = [
         { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
         { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
         { path: "/dashboard/my-donation-requests", label: "My Donation Req", icon: <LuGitPullRequestDraft /> },
         { path: "/dashboard/create-donation-request", label: "Create Donation Req", icon: <IoCreateOutline /> },
     ];
 
+    const AdminMenuItems = [
+        { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
+        { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
+        { path: "/dashboard/all-users", label: "All Users", icon: <FaUsers /> },
+        { path: "/dashboard/all-blood-donation-request", label: "All Request", icon: <IoDocuments /> },
+    ];
+
+    const menuItems =
+        userInfo?.role === "admin" ? AdminMenuItems : DonorMenuItems;
+
     return (
         <>
-            {/* Overlay */}
             {openSidebar && (
                 <div
                     className="fixed inset-0 bg-opacity-40 z-40"
@@ -44,19 +53,19 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                 />
             )}
 
-             <aside
+            <aside
                 className={`fixed top-0 left-0 z-50 h-full w-70 bg-base-200 shadow-2xl p-5
                 transform transition-transform duration-300
                 ${openSidebar ? "translate-x-0" : "-translate-x-full"}`}
             >
-                 <button
+                <button
                     className="text-xl mb-4"
                     onClick={() => setOpenSidebar(false)}
                 >
                     <ImCross className="text-primary" />
                 </button>
 
-                 <Link to="/" className="flex justify-center">
+                <Link to="/" className="flex justify-center">
                     <img src={logo} alt="Logo" className="w-20 md:w-24" />
                 </Link>
 
@@ -64,7 +73,7 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                     <span className="text-blue-400">Donor</span> Dashboard
                 </h2>
 
-                 <ul className="menu gap-2">
+                <ul className="menu gap-2">
                     {menuItems.map((item) => (
                         <li key={item.path}>
                             <NavLink
@@ -84,7 +93,7 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                         </li>
                     ))}
 
-                     <li className="mt-100 md:mt-60">
+                    <li className="mt-100 md:mt-60">
                         <Link
                             to="/"
                             className="flex items-center gap-3 py-2 px-4 rounded-md text-primary font-semibold hover:bg-base-200"

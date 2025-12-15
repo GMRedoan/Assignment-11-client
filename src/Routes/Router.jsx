@@ -14,6 +14,8 @@ import DashBoard from "../DashBoardLayout/Donor/DashBoard";
 import DonationReqDetails from "../Pages/DonationReqDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import DonationReqEdit from "../DashBoardLayout/DonationEdit/DonationReqEdit";
+import AllUsers from "../DashBoardLayout/DashBoard/Admin/AllUsers";
+import AllRequest from "../DashBoardLayout/DashBoard/Admin/AllRequest";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +63,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DashBoard></DashBoard>
+        element: <DashBoard></DashBoard>,
+        loader: () => fetch('http://localhost:3000/users'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: 'profile',
@@ -84,6 +88,16 @@ export const router = createBrowserRouter([
         element: <DonationReqEdit></DonationReqEdit>,
         loader: ({ params }) => fetch(`http://localhost:3000/donationReqDetails/${params.id}`),
         hydrateFallbackElement: <Loading></Loading>
+      },
+      {
+        path:'all-users',
+        element:<AllUsers></AllUsers>,
+        loader: () => fetch('http://localhost:3000/users'),
+        hydrateFallbackElement:<Loading></Loading>
+      },
+      {
+        path:'all-blood-donation-request',
+        element:<AllRequest></AllRequest>
       }
     ]
   },

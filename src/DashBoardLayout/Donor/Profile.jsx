@@ -54,6 +54,7 @@ const Profile = () => {
                 title: "Nothing is changed",
                 icon: "info",
                 confirmButtonColor: "#357BF0",
+                
             })
         }
         Swal.fire({
