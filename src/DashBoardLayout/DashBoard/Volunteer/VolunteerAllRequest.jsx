@@ -1,20 +1,17 @@
-import React, { use, useEffect, useState } from "react";
-import { AuthContext } from "../../Authentication/AuthContex";
-import useAxios from "../../Hooks/UseAxios";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router";
+import useAxios from "../../../Hooks/UseAxios";
 
-const MyDonationReq = () => {
-  const { userInfo } = use(AuthContext)
+const VolunteerAllRequest = () => {
   const axiosInstance = useAxios()
 
   const [requests, setRequests] = useState([]);
   const [filterStatus, setFilterStatus] = useState("all")
 
   useEffect(() => {
-    axiosInstance.get(`/donationReq/${userInfo?.email}`)
+    axiosInstance.get('/donationReq')
       .then((res) => setRequests(res.data));
-  }, [userInfo?.email, axiosInstance]);
+  }, [axiosInstance]);
 
   const filteredRequests =
     filterStatus === "all"
@@ -66,37 +63,6 @@ const MyDonationReq = () => {
 
   }
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "This donation request will be permanently deleted!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#F91617",
-      cancelButtonColor: "#6B7280",
-      confirmButtonText: "Yes, delete it!",
-    })
-      .then(async (result) => {
-        if (result.isConfirmed) {
-          const res = await axiosInstance.delete(
-            `/donationReqDetails/${id}`
-          );
-
-          if (res.data.deletedCount > 0) {
-            setRequests((prev) =>
-              prev.filter((req) => req._id !== id)
-            );
-            Swal.fire({
-              title: "Deleted!",
-              text: "Donation request has been deleted.",
-              icon: "success",
-              confirmButtonColor: "#F91617",
-            });
-          }
-        }
-      });
-  }
-
   return (
     <div className="p-6 pt-10">
       <h2 className="text-3xl font-bold mb-4 text-center">
@@ -121,8 +87,8 @@ const MyDonationReq = () => {
           <thead className="bg-primary text-white">
             <tr>
               <th>No</th>
-              <th>Recipient <br /> Name</th>
-              <th>Blood <br /> Group</th>
+              <th>Recipient Name</th>
+              <th>Blood Group</th>
               <th>District</th>
               <th>Upazila</th>
               <th>Hospital</th>
@@ -131,9 +97,7 @@ const MyDonationReq = () => {
               <th>Donor info</th>
               <th>Status</th>
               <th>Action</th>
-              <th>Manage</th>
-              <th>Info</th>
-            </tr>
+             </tr>
           </thead>
 
           <tbody>
@@ -190,31 +154,7 @@ const MyDonationReq = () => {
                       </div>
                     ): <p className="text-gray-400 font-bold text-[10px]">unavailable</p>}
                   </td>
-                  <td>
-                    {req.status === "pending" ? (
-                      <div className="flex flex-col gap-1">
-                        <Link
-                          to={`/dashboard/donationReqEdit/${req._id}`}
-                          className="btn btn-xs bg-blue-500 text-white hover:bg-blue-600">
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(req._id)}
-                          className="btn btn-xs text-primary hover:bg-red-500 hover:text-white border-primary">
-                          Delete
-                        </button>
-                      </div>
-                    ): <p className="text-gray-400 font-bold text-[10px]">unavailable</p>}
-                  </td>
-                  <td>
-                    <Link
-                      to={`/donationReqDetails/${req._id}`}
-                      className="btn btn-sm text-blue-500 hover:bg-blue-600 hover:text-white border-blue-400"
-                    >
-                      View
-                    </Link>
-                  </td>
-                </tr>
+                 </tr>
               ))
             )}
           </tbody>
@@ -224,4 +164,5 @@ const MyDonationReq = () => {
   );
 };
 
-export default MyDonationReq;
+export default VolunteerAllRequest;
+ 

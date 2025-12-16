@@ -18,7 +18,6 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
         setError('')
-        console.log('clicked');
         login(email, password)
             .then(() => {
                 Swal.fire({

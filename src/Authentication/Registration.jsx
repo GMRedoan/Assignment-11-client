@@ -5,8 +5,10 @@ import { AuthContext } from './AuthContex';
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAxios from '../Hooks/UseAxios';
 
 const Registration = () => {
+    const axiosInstance = useAxios()
     const { districts, upazilas } = useLoaderData()
     const { createUser, updateUserProfile, setUser } = use(AuthContext)
     const navigate = useNavigate();
@@ -63,20 +65,13 @@ const Registration = () => {
             }
             setUploading(false);
         }
-        //    const photo = res.data.data.display_url
-        const formData = {
-            name, email, bloodGroup, district, upazila, photo, status: 'active', role: 'donor'
-        }
         createUser(email, password)
-            .then((result) => {
-                // save users data in db
-                axios.post('http://localhost:3000/users', formData)
-                    .then(res => {
-                        console.log(res.data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
+            .then(async (result) => {
+                const formData = {
+                    name, email, bloodGroup, district, upazila, photo, status: 'active', role: 'donor'
+                }
+                const res = await axiosInstance.post('/users', formData)
+                console.log(res.data)
                 updateUserProfile({
                     displayName: name,
                     photoURL: photo
@@ -220,7 +215,7 @@ const Registration = () => {
                                             }
                                         </div>
                                     </div>
-                                 </div>
+                                </div>
                                 <div className='md:col-span-3 flex justify-center '>
                                     <button
                                         type="submit"

@@ -1,15 +1,17 @@
 import React, { use } from 'react';
 import { FaHandHoldingUsd, FaTint, FaUsers } from 'react-icons/fa';
-import { AuthContext } from '../../Authentication/AuthContex';
+import { AuthContext } from '../../../Authentication/AuthContex';
 
-const AdminDashBoard = ({ users, allReq }) => {
+
+const VolunteerDashBoard = ({ users, allReq }) => {
     const { userInfo } = use(AuthContext);
+
 
     return (
         <section className="my-12 px-4">
             <div className="text-center">
                 <h2 className="text-4xl font-bold mb-4">
-                    Welcome back Admin, <span className="text-primary">{userInfo?.name}</span>
+                    Welcome back Volunteer, <span className="text-primary">{userInfo?.name}</span>
                 </h2>
                 <p className="text-gray-600 mb-10" >
                     Real-time insights into donors, funding, and blood donation requests.
@@ -66,4 +68,4 @@ const AdminDashBoard = ({ users, allReq }) => {
     );
 };
 
-export default AdminDashBoard;
+export default VolunteerDashBoard;

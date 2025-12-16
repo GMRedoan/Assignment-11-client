@@ -1,10 +1,10 @@
 import React, { use } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router";
-import { AuthContext } from "../../Authentication/AuthContex";
 import Swal from "sweetalert2";
-import useAxios from "../../Hooks/UseAxios";
-
+import { AuthContext } from "../../../Authentication/AuthContex";
+import useAxios from "../../../Hooks/UseAxios";
+ 
 const CreateDonationReq = () => {
     const { userInfo } = use(AuthContext)
     const { districts, upazilas } = useLoaderData();
@@ -171,7 +171,7 @@ const CreateDonationReq = () => {
                         className={`btn w-60 text-white ${userInfo.status === "blocked" ? "bg-gray-600 border-gray-600" : "btn-primary"
                             }`}
                     >
-                        {userInfo.status === "blocked" ? "Currently this user is Blocked" : "Send Donation Request"}
+                        {userInfo.status === "blocked" ? "Currently you are Blocked" : "Send Donation Request"}
                     </button>
                 </div>
             </form>

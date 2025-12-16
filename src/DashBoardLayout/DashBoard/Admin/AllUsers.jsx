@@ -27,14 +27,14 @@ const AllUsers = () => {
         }
         if (users.find(u => u._id === id)?.role === 'admin') {
             return Swal.fire({
-                title: "Action Not Allowed",
+                title: "Blocking is not Allowed",
                 text: "You cannot block another admin.",
                 icon: "error",
                 confirmButtonColor: "#F91617",
             })
         }
         const updateUser = {
-            status: 'block'
+            status: 'blocked'
         }
         const res = await axiosInstance.patch(`/users/${id}`, updateUser)
         if (res.data.modifiedCount > 0) {
@@ -164,11 +164,18 @@ const AllUsers = () => {
                                 <td className="text-sm text-gray-500">{user?.email}</td>
 
                                 <td>
-                                    <span className="badge badge-outline capitalize">
+                                    <span
+                                        className={`badge capitalize font-semibold
+                                               ${user?.role === "admin"
+                                                ? "bg-primary text-white"
+                                                : user?.role === "volunteer"
+                                                    ? "bg-yellow-400 text-black"
+                                                    : "bg-blue-500 text-white"
+                                            }`}
+                                    >
                                         {user?.role}
                                     </span>
                                 </td>
-
                                 <td>
                                     <span
                                         className={`badge font-semibold text-white

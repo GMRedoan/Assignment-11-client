@@ -3,19 +3,19 @@ import Root from "../Root/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Authentication/Login";
 import Registration from "../Authentication/Registration";
-import CreateDonationReq from "../DashBoardLayout/Donor/CreateDonationReq"
+import CreateDonationReq from "../DashBoardLayout/DashBoard/Donor/CreateDonationReq"
 import Loading from "../Shared/Loading";
-import MyDonationReq from "../DashBoardLayout/Donor/MyDonationReq";
+import MyDonationReq from "../DashBoardLayout/DashBoard/Donor/MyDonationReq";
 import Search from '../Pages/Search';
-import Profile from '../DashBoardLayout/Donor/Profile'
+import Profile from '../DashBoardLayout/DashBoard/Profile'
 import DonationReq from '../Pages/DonationReq'
 import DashBoardLayout from '../DashBoardLayout/DashBoardLayout'
-import DashBoard from "../DashBoardLayout/Donor/DashBoard";
+import DashBoard from "../DashBoardLayout/DashBoard/DashBoard";
 import DonationReqDetails from "../Pages/DonationReqDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import DonationReqEdit from "../DashBoardLayout/DonationEdit/DonationReqEdit";
 import AllUsers from "../DashBoardLayout/DashBoard/Admin/AllUsers";
-import AllRequest from "../DashBoardLayout/DashBoard/Admin/AllRequest";
+import AllRequest from "../DashBoardLayout/DashBoard/AllRequest";
 
 export const router = createBrowserRouter([
   {
@@ -59,7 +59,9 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashBoardLayout></DashBoardLayout>,
+    element: <PrivateRoutes>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoutes>,
     children: [
       {
         index: true,

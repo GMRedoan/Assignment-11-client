@@ -1,8 +1,8 @@
 import React, { use, useEffect, useState } from 'react';
-import { AuthContext } from '../../Authentication/AuthContex';
-import useAxios from '../../Hooks/UseAxios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import { AuthContext } from '../../../Authentication/AuthContex';
+import useAxios from '../../../Hooks/UseAxios';
 
 const DonorDashBoard = () => {
     const { userInfo } = use(AuthContext);

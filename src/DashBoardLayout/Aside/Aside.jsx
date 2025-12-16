@@ -25,24 +25,33 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                 navigate("/");
             })
             .catch(console.log);
-    };
+    }
 
     const DonorMenuItems = [
         { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
         { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
         { path: "/dashboard/my-donation-requests", label: "My Donation Req", icon: <LuGitPullRequestDraft /> },
         { path: "/dashboard/create-donation-request", label: "Create Donation Req", icon: <IoCreateOutline /> },
-    ];
+    ]
 
     const AdminMenuItems = [
         { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
         { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
         { path: "/dashboard/all-users", label: "All Users", icon: <FaUsers /> },
         { path: "/dashboard/all-blood-donation-request", label: "All Request", icon: <IoDocuments /> },
+    ]
+
+    const VolunteerMenuItems = [
+        { path: "/dashboard", label: "Dashboard", icon: <MdDashboard /> },
+        { path: "/dashboard/profile", label: "My Profile", icon: <FaUser /> },
+        { path: "/dashboard/all-blood-donation-request", label: "All Request", icon: <IoDocuments /> },
     ];
 
+
     const menuItems =
-        userInfo?.role === "admin" ? AdminMenuItems : DonorMenuItems;
+        userInfo?.role === 'admin' ? AdminMenuItems :
+            userInfo?.role === 'volunteer' ? VolunteerMenuItems :
+                DonorMenuItems
 
     return (
         <>
@@ -70,7 +79,10 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                 </Link>
 
                 <h2 className="text-xl md:text-2xl font-bold text-center my-4">
-                    <span className="text-blue-400">Donor</span> Dashboard
+                    <span className="text-blue-400 capitalize">
+                        {userInfo?.role}
+                    </span>{" "}
+                    Dashboard
                 </h2>
 
                 <ul className="menu gap-2">

@@ -12,6 +12,15 @@ const DonationReqDetails = () => {
   const axiosInstance = useAxios()
 
   const handleConfirmDonation = async () => {
+    if (request.requesterEmail == userInfo.email) {
+      return Swal.fire({
+        title: "Request creator can't donate his own request",
+        icon: "info",
+        confirmButtonColor: "#357BF0",
+      });
+
+    }
+
     const updateDonationReq = {
       donorName: userInfo.name,
       donorEmail: userInfo.email,

@@ -2,21 +2,21 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { AuthContext } from "./AuthContex";
 import { auth } from "../Firebase/firebase.config";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxios from "../Hooks/UseAxios";
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
     const [loading, setLoading] = useState(true);
     const [donors, setDonors] = useState([]);
+    const axiosInstance = useAxios()
 
     // Load donors
     useEffect(() => {
-        fetch("http://localhost:3000/users")
-            .then((res) => res.json())
-            .then((data) => setDonors(data))
+        axiosInstance.get("/users")
+            .then((res) => setDonors(res.data))
             .catch((err) => console.error(err));
-    }, []);
+    }, [axiosInstance]);
 
     // create user
     const createUser = (email, password) => {
@@ -29,9 +29,9 @@ const AuthProvider = ({ children }) => {
     // login user
     const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-        .finally(() =>
-            setLoading(false)
-        );
+            .finally(() =>
+                setLoading(false)
+            );
     };
 
     // logout
@@ -62,12 +62,10 @@ const AuthProvider = ({ children }) => {
     // get user role
     useEffect(() => {
         if (!user) return
-        axios
-            .get(`http://localhost:3000/role/${user.email}`)
-            .then((res) => {
-                setUserInfo(res.data)
-             })
-    }, [user])
+         axiosInstance.get(`/role/${user?.email}`)
+      .then((res) => setUserInfo(res.data))
+      .catch(console.error)
+    }, [user, axiosInstance])
 
     const authData = {
         loading,
