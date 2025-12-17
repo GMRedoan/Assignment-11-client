@@ -3,7 +3,7 @@ import { FiCheckCircle, FiArrowRight } from "react-icons/fi";
 
 const OurMission2 = () => {
     return (
-        <section className="pt-40 md:py-20 px-6 lg:px-20">
+        <section id="aboutUs-section" className="pt-40 md:py-20 px-6 lg:px-20">
             <div className="flex flex-col-reverse md:flex-row gap-10 items-center">
 
                 <div className="relative w-full">

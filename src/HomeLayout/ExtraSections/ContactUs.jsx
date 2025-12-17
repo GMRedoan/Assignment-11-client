@@ -1,5 +1,5 @@
 import logo from "../../assets/bglogo.png";
-import { FaPhoneAlt, FaClock, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaClock, FaEnvelope } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const ContactUs = () => {

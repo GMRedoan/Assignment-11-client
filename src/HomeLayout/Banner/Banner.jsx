@@ -3,7 +3,7 @@ import hero from "../../assets/hero2.avif";
 
 const Banner = () => {
   return (
-    <section
+    <section id="banner-section"
       className=" relative text-white 
   bg-cover bg-center 
   bg-no-repeat 

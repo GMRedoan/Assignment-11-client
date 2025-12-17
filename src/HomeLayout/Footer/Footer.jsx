@@ -23,25 +23,48 @@ const Footer = () => {
 
                     <div>
                         <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
-                        <ul className="space-y-3 text-gray-300">
-                            <li className="hover:text-white"><a href="/">Home</a></li>
-                            <li className="hover:text-white"><a href=" ">About</a></li>
-                            <li className="hover:text-white"><a href=" ">Find Donor</a></li>
-                            <li className="hover:text-white"><a href=" ">Contact</a></li>
+                        <ul className="space-y-3 text-gray-300 cursor-pointer">
+                            <li
+                                onClick={() => {
+                                    const section = document.getElementById("banner-section")
+                                    if (section) {
+                                        section.scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                        window.location.href = "/";
+                                    }
+
+                                }
+                                }
+                                className="hover:text-white"><a>Home</a></li>
+                            <li
+                                onClick={() => {
+                                    const section = document.getElementById("aboutUs-section");
+
+                                    if (section) {
+                                        section.scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                        window.location.href = "/";
+                                    }
+                                }}
+                                className="hover:text-white">
+                                <a>About</a>
+                            </li>
+                            <li className="hover:text-white"><a href="/search">Find Donor</a></li>
+                            <li className="hover:text-white"><a>Contact</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="text-xl font-semibold text-white mb-4">Support</h3>
                         <ul className="space-y-3 text-gray-300">
-                            <li className="hover:text-white"><a href=" ">Request Blood</a></li>
-                            <li className="hover:text-white"><a href=" ">Testimonials</a></li>
-                            <li className="hover:text-white"><a href=" ">FAQs</a></li>
-                            <li className="hover:text-white"><a href=" ">Blog</a></li>
+                            <li className="hover:text-white"><a>Request Blood</a></li>
+                            <li className="hover:text-white"><a>Testimonials</a></li>
+                            <li className="hover:text-white"><a>FAQs</a></li>
+                            <li className="hover:text-white"><a>Blog</a></li>
                         </ul>
                     </div>
 
-                     <div>
+                    <div>
                         <h3 className="text-xl font-semibold text-white mb-4">Contact</h3>
                         <div className="text-gray-300 space-y-2">
                             <p className="text-sm">✉️ support@redcare.com</p>
@@ -68,7 +91,7 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-        </footer>
+        </footer >
     );
 };
 
