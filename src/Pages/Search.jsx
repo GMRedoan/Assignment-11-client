@@ -27,6 +27,7 @@ const Search = () => {
 
     return (
         <section className="bg-base-200 py-10 px-6 md:px-16">
+            <title>Search</title>
             <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
                 <h2 className="text-3xl font-bold text-center mb-16">
                     Search for <span className='text-primary'>Blood</span> Donors

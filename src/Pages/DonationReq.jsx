@@ -22,6 +22,7 @@ const DonationReq = () => {
 
   return (
     <div className="p-6 pt-10">
+      <title>Donation Request</title>
       <h2 className="text-3xl font-bold mb-2 text-center">
         All <span className="text-primary">Donation</span> Requests
       </h2>

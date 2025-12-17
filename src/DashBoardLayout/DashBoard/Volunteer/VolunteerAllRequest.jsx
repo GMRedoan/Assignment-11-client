@@ -65,6 +65,7 @@ const VolunteerAllRequest = () => {
 
   return (
     <div className="p-6 pt-10">
+      <title>Donation Requests</title>
       <h2 className="text-3xl font-bold mb-4 text-center">
         All <span className="text-primary">Donation</span> Requests
       </h2>
@@ -97,7 +98,7 @@ const VolunteerAllRequest = () => {
               <th>Donor info</th>
               <th>Status</th>
               <th>Action</th>
-             </tr>
+            </tr>
           </thead>
 
           <tbody>
@@ -152,9 +153,9 @@ const VolunteerAllRequest = () => {
                           Cancel
                         </button>
                       </div>
-                    ): <p className="text-gray-400 font-bold text-[10px]">unavailable</p>}
+                    ) : <p className="text-gray-400 font-bold text-[10px]">unavailable</p>}
                   </td>
-                 </tr>
+                </tr>
               ))
             )}
           </tbody>
@@ -165,4 +166,3 @@ const VolunteerAllRequest = () => {
 };
 
 export default VolunteerAllRequest;
- 

@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Authentication/AuthContex";
 import useAxios from "../../../Hooks/UseAxios";
- 
+
 const CreateDonationReq = () => {
     const { userInfo } = use(AuthContext)
     const { districts, upazilas } = useLoaderData();
@@ -31,6 +31,7 @@ const CreateDonationReq = () => {
 
     return (
         <div className="my-10 max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <title>Create Donation Requests</title>
             <h2 className="text-3xl font-bold mb-8 text-center">
                 Create a <span className="text-primary">Donation</span> Request
             </h2>

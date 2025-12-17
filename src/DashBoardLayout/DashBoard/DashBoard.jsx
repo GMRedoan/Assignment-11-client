@@ -15,6 +15,7 @@ const DashBoard = () => {
 
     return (
         <div className="p-4 pt-14 min-h-screen">
+            <title>Dashboard</title>
             {
                 userInfo?.role == 'donor' && <DonorDashBoard></DonorDashBoard>
             }

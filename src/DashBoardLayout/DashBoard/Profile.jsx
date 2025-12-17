@@ -35,7 +35,7 @@ const Profile = () => {
             const url = res.data.data.display_url;
             handleChange({ target: { name: "photo", value: url } });
         }
-         catch (err) {
+        catch (err) {
             console.log(err);
             Swal.fire({
                 title: "Image upload failed",
@@ -54,7 +54,7 @@ const Profile = () => {
                 title: "Nothing is changed",
                 icon: "info",
                 confirmButtonColor: "#357BF0",
-                
+
             })
         }
         Swal.fire({
@@ -66,6 +66,7 @@ const Profile = () => {
     };
     return (
         <div className='flex justify-center items-center min-h-screen'>
+            <title>Profile</title>
             <div className="max-w-3xl p-6 px-10 bg-white rounded-xl shadow-lg ">
 
                 <div className="flex justify-between items-center mb-6">
