@@ -5,32 +5,33 @@ import useAxios from "../Hooks/UseAxios";
 import Swal from "sweetalert2";
 
 const FundForm = () => {
-    const { userInfo } = useContext(AuthContext)
-    const axiosInstance = useAxios()
+    const { userInfo, user } = useContext(AuthContext);
+    const axiosInstance = useAxios();
 
-    const { register, handleSubmit, reset } = useForm({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
         defaultValues: {
             funderName: userInfo?.name || "",
             fundingDate: new Date().toISOString().split("T")[0],
         },
     });
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
+
         const fundData = {
             funderName: data.funderName,
-            fundAmount: Number(data.fundAmount),
+            funderEmail: userInfo.email,
+            fundAmount: parseInt(data.fundAmount),
             fundingDate: data.fundingDate,
         };
-        const res = await axiosInstance.post('/funds', fundData)
-        if (res.data) {
-            Swal.fire({
-                title: "Fund Donation Successful",
-                icon: "success",
-                confirmButtonColor: "#F91617",
-            })
-            reset();
-        }
-    };
+         axiosInstance.post("/funds", fundData)
+         .then(res => {
+            window.location.href = res.data.url
+         })
+     };
 
     return (
         <div className="min-h-screen flex justify-center items-center px-4">
@@ -38,9 +39,7 @@ const FundForm = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="card w-full max-w-md bg-base-100 shadow-xl p-6"
             >
-                <h2 className="text-2xl font-bold text-center mb-2">
-                    Donate Fund
-                </h2>
+                <h2 className="text-2xl font-bold text-center mb-2">Donate Fund</h2>
                 <p className="text-center text-gray-500 mb-6">
                     Support by contributing funds
                 </p>
@@ -52,6 +51,7 @@ const FundForm = () => {
                     <input
                         type="text"
                         {...register("funderName")}
+                        defaultValue={user?.name}
                         readOnly
                         className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
                     />
@@ -66,12 +66,13 @@ const FundForm = () => {
                         placeholder="Enter amount"
                         {...register("fundAmount", {
                             required: "Amount is required",
-                            min: {
-                                value: 1,
-                                message: "Amount must be at least 1",
-                            },
+                            min: { value: 1, message: "Amount must be at least 1" },
                         })}
-                        className="input input-bordered w-full" />
+                        className="input input-bordered w-full"
+                    />
+                    {errors.fundAmount && (
+                        <p className="text-red-500 mt-1">{errors.fundAmount.message}</p>
+                    )}
                 </div>
 
                 <div className="form-control mb-6">
