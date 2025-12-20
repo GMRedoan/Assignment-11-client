@@ -2,7 +2,8 @@ import React from 'react';
 
 const OurMission = () => {
     return (
-        <section className="md:py-24 px-10 lg:px-28">
+        <section
+         className="md:py-24 px-10 lg:px-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 <div>

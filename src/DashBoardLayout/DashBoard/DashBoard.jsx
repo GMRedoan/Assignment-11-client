@@ -16,7 +16,7 @@ const DashBoard = () => {
     const allReq = use(allReqPromise)
     const allFunds = use(allFundsPromise)
     const totalFundAmount = allFunds.reduce(
-        (total, fund) => total + Number(fund.fundAmount),
+        (total, fund) => total + Number(fund.amount),
         0
     );
 

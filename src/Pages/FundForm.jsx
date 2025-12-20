@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Authentication/AuthContex";
 import useAxios from "../Hooks/UseAxios";
-import Swal from "sweetalert2";
 
 const FundForm = () => {
     const { userInfo, user } = useContext(AuthContext);
@@ -56,6 +55,20 @@ const FundForm = () => {
                         className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
                     />
                 </div>
+
+                <div className="form-control mb-4">
+                    <label className="label">
+                        <span className="label-text">Funder Email</span>
+                    </label>
+                    <input
+                        type="text"
+                        {...register("funderEmail")}
+                        defaultValue={user?.email}
+                        readOnly
+                        className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
+                    />
+                </div>
+
 
                 <div className="form-control mb-4">
                     <label className="label">

@@ -30,7 +30,7 @@ const Funding = () => {
                             <th>
                                 <div className="flex items-center gap-2">
                                     <FaUser />
-                                    Funder Name
+                                    Funder Email
                                 </div>
                             </th>
                             <th>
@@ -44,6 +44,7 @@ const Funding = () => {
                                     Date
                                 </div>
                             </th>
+                            <th>Transaction ID</th>
                         </tr>
                     </thead>
 
@@ -52,11 +53,12 @@ const Funding = () => {
                             allFunding.map((fund, index) => (
                                 <tr key={fund._id}>
                                     <td>{index+1}</td>
-                                    <td>{fund.funderName}</td>
+                                    <td>{fund.DonorEmail}</td>
                                     <td className="font-semibold text-green-500 flex items-center">
-                                        <TbCurrencyTaka />{fund.fundAmount}
+                                        <TbCurrencyTaka />{fund.amount}
                                     </td>
-                                    <td>{fund.fundingDate}</td>
+                                    <td>{fund.paidAt}</td>
+                                    <td>{fund.transactionId}</td>
                                 </tr>
                             ))
                         ) : (
