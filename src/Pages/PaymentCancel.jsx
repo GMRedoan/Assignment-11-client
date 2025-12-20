@@ -5,10 +5,10 @@ const PaymentCancel = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-red-50">
+        <div className="min-h-screen flex items-center justify-center bg-base-200">
             <div className="bg-white shadow-xl rounded-2xl p-10 max-w-md w-full text-center">
 
-                 <div className="mx-auto flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-6">
+                 <div className="mx-auto flex items-center justify-center w-16 h-16 rounded-full bg-base-200 mb-6">
                     <svg
                         className="w-8 h-8 text-red-600"
                         fill="none"
