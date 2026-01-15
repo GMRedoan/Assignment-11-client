@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Authentication/AuthContex";
 import useAxios from "../../../Hooks/UseAxios";
+import { BsFillSendPlusFill } from "react-icons/bs";
 
 const CreateDonationReq = () => {
     const { userInfo } = use(AuthContext)
@@ -30,7 +31,7 @@ const CreateDonationReq = () => {
     };
 
     return (
-        <div className="my-10 max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <div className="my-10 max-w-4xl mx-auto bg-base-200 p-8 rounded-xl shadow-lg">
             <title>Create Donation Requests</title>
             <h2 className="text-3xl font-bold mb-8 text-center">
                 Create a <span className="text-primary">Donation</span> Request
@@ -45,7 +46,7 @@ const CreateDonationReq = () => {
                         readOnly
                         defaultValue={userInfo.name}
                         {...register("requesterName")}
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-base-100"
                     />
                 </div>
 
@@ -56,7 +57,7 @@ const CreateDonationReq = () => {
                         readOnly
                         defaultValue={userInfo.email}
                         {...register("requesterEmail")}
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-base-100"
                     />
                 </div>
 
@@ -172,7 +173,10 @@ const CreateDonationReq = () => {
                         className={`btn w-60 text-white ${userInfo.status === "blocked" ? "bg-gray-600 border-gray-600" : "btn-primary"
                             }`}
                     >
-                        {userInfo.status === "blocked" ? "Currently you are Blocked" : "Send Donation Request"}
+                        {userInfo.status === "blocked" ? "Currently you are Blocked" : <span className="flex items-center justify-center gap-2">
+                            Send Donation Request
+                            <BsFillSendPlusFill className="text-md" />
+                        </span>}
                     </button>
                 </div>
             </form>

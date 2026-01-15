@@ -12,7 +12,7 @@ const AdminDashBoard = ({ users, allReq, totalFundAmount }) => {
                 <h2 className="text-4xl font-bold mb-4">
                     Welcome back Admin, <span className="text-primary">{userInfo?.name}</span>
                 </h2>
-                <p className="text-gray-600 mb-10" >
+                <p className="text-accent mb-10" >
                     Real-time insights into donors, funding, and blood donation requests.
                 </p>
 

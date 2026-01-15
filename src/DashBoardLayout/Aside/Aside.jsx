@@ -6,6 +6,7 @@ import { ImCross } from "react-icons/im";
 import { MdDashboard } from "react-icons/md";
 import { use } from "react";
 import Swal from "sweetalert2";
+import Theme from "../../Shared/Theme"
 
 import logo from "../../assets/bglogo.png";
 import { AuthContext } from "../../Authentication/AuthContex";
@@ -75,10 +76,14 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                 </button>
 
                 <Link to="/" className="flex justify-center">
-                    <img src={logo} alt="Logo" className="w-20 md:w-24" />
+                    <img src={logo} alt="Logo" className="w-20 md:w-28" />
                 </Link>
 
-                <h2 className="text-xl md:text-2xl font-bold text-center my-4">
+                <div className="text-center my-3">
+                    <Theme></Theme>
+                </div>
+
+                <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
                     <span className="text-blue-400 capitalize">
                         {userInfo?.role}
                     </span>{" "}
@@ -95,8 +100,8 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                                 className={({ isActive }) =>
                                     `flex items-center gap-3 font-medium py-2 px-4 rounded-md
                                     ${isActive
-                                        ? "bg-primary text-white"
-                                        : "hover:bg-base-300"}`
+                                        ? "bg-primary text-black"
+                                        : "hover:bg-base-100"}`
                                 }
                             >
                                 <span className="text-lg">{item.icon}</span>
@@ -105,7 +110,7 @@ const Aside = ({ openSidebar, setOpenSidebar }) => {
                         </li>
                     ))}
 
-                    <li className="mt-100 md:mt-60">
+                    <li className="mt-90 md:mt-50">
                         <Link
                             to="/"
                             className="flex items-center gap-3 py-2 px-4 rounded-md text-primary font-semibold hover:bg-base-200"

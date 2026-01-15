@@ -67,7 +67,7 @@ const Profile = () => {
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <title>Profile</title>
-            <div className="max-w-3xl p-6 px-10 bg-white rounded-xl shadow-lg ">
+            <div className="max-w-3xl p-6 px-10 bg-base-200 rounded-xl shadow-lg ">
 
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="md:ml-20 text-2xl font-bold text-primary">My Profile</h2>
@@ -87,31 +87,31 @@ const Profile = () => {
 
                     <div className="space-y-5">
                         <div className="form-control">
-                            <label className="label"><span className="label-text">Name</span></label>
+                            <label className="label"><span className="label-text text-base-300">Name</span></label>
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name || ''}
                                 disabled={!editable}
-                                className="input w-full input-bordered"
+                                className="input w-full input-bordered bg-base-100"
                                 onChange={handleChange}
                             />
                         </div>
 
                         <div className="form-control">
-                            <label className="label"><span className="label-text">Email</span></label>
+                            <label className="label"><span className="label-text text-base-300">Email</span></label>
                             <input
                                 type="email"
                                 name="email"
                                 value={formData.email || ''}
                                 disabled
-                                className="input input-bordered bg-gray-100 cursor-not-allowed"
+                                className="input input-bordered bg-base-100 cursor-not-allowed"
                             />
                         </div>
                         {/* blood group */}
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text font-semibold">Blood Group</span>
+                                <span className="label-text font-semibold text-base-300">Blood Group</span>
                             </label>
 
                             {editable ? (
@@ -138,13 +138,13 @@ const Profile = () => {
                                     name="bloodGroup"
                                     value={formData.bloodGroup || ''}
                                     disabled
-                                    className="input input-bordered bg-gray-100 cursor-not-allowed"
+                                    className="input input-bordered bg-base-100 cursor-not-allowed"
                                 />
                             )}
                         </div>
                         {/* district */}
                         <div className="form-control">
-                            <label className="label"><span className="label-text">District</span></label>
+                            <label className="label"><span className="label-text text-base-300 font-semibold">District</span></label>
 
                             {editable ? (
                                 <select
@@ -164,13 +164,13 @@ const Profile = () => {
                                     name="district"
                                     value={formData.district || ''}
                                     disabled
-                                    className="input input-bordered bg-gray-100 cursor-not-allowed"
+                                    className="input input-bordered bg-base-100 cursor-not-allowed"
                                 />
                             )}
                         </div>
                         {/* upazila */}
                         <div className="form-control">
-                            <label className="label"><span className="label-text">Upazila</span></label>
+                            <label className="label"><span className="label-text font-semibold text-base-300">Upazila</span></label>
 
                             {editable ? (
                                 <select
@@ -190,7 +190,7 @@ const Profile = () => {
                                     name="upazila"
                                     value={formData.upazila || ''}
                                     disabled
-                                    className="input input-bordered bg-gray-100 cursor-not-allowed"
+                                    className="input input-bordered bg-base-100 cursor-not-allowed"
                                 />
                             )}
                         </div>

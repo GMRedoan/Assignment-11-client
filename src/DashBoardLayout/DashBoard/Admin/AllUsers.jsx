@@ -118,7 +118,7 @@ const AllUsers = () => {
                     <h2 className="text-4xl font-bold pb-2">
                         Users <span className="text-primary">Overview</span>
                     </h2>
-                    <p className="text-gray-600">A complete list of platform users with management controls.</p>
+                    <p className="text-accent">A complete list of platform users with management controls.</p>
                 </div>
                 <select
                     className="select select-bordered w-44"
@@ -131,7 +131,7 @@ const AllUsers = () => {
                 </select>
             </div>
 
-            <div className="overflow-x-auto bg-base-100 rounded-xl shadow-lg">
+            <div className="overflow-x-auto bg-base-200 rounded-xl shadow-lg">
                 <table className="table w-full">
                     <thead className="bg-primary text-white ">
                         <tr>
@@ -165,7 +165,7 @@ const AllUsers = () => {
                                     </div>
                                 </td>
 
-                                <td className="text-sm text-gray-500">{user?.email}</td>
+                                <td className="text-sm text-blue-500">{user?.email}</td>
 
                                 <td>
                                     <span

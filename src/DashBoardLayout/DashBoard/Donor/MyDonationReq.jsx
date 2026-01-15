@@ -101,7 +101,7 @@ const MyDonationReq = () => {
   return (
     <div className="p-6 pt-10">
             <title>My Donation Requests</title>
-      <h2 className="text-3xl font-bold mb-4 text-center">
+      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center">
         My <span className="text-primary">Donation</span> Requests
       </h2>
 
@@ -141,13 +141,13 @@ const MyDonationReq = () => {
           <tbody>
             {filteredRequests.length === 0 ? (
               <tr>
-                <td colSpan="7" className="text-center py-4 text-gray-500">
+                <td colSpan="7" className="text-center py-4 text-accent">
                   No donation requests found.
                 </td>
               </tr>
             ) : (
               filteredRequests.map((req, index) => (
-                <tr key={req._id}>
+                <tr key={req._id} className="bg-base-200">
                   <td>{index + 1}</td>
                   <td>{req.recipientName}</td>
                   <td className="font-bold">{req.bloodGroup}</td>
@@ -163,7 +163,7 @@ const MyDonationReq = () => {
                         <p className="text-sm text-blue-500">{req.donorEmail}</p>
                       </div>
                     ) : (
-                      <span className="text-gray-400">Not Assigned</span>
+                      <span className="text-accent">Not Assigned</span>
                     )}
                   </td>
 

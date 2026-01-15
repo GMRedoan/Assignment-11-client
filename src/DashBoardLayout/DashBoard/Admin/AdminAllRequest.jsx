@@ -98,7 +98,7 @@ const AdminAllRequest = () => {
   return (
     <div className="p-6 pt-10">
             <title>Donation Requests</title>
-      <h2 className="text-3xl font-bold mb-4 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
         All <span className="text-primary">Donation</span> Requests
       </h2>
 

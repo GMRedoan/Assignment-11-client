@@ -93,10 +93,10 @@ const DonorDashBoard = () => {
     return (
         <div>
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">
                     Welcome back, <span className="text-primary">{userInfo?.name}</span>
                 </h2>
-                <p className="text-gray-600 mb-10" >
+                <p className="text-accent mb-10" >
                     Here’s a quick overview of your recent donation requests and activities.
                 </p>
 
@@ -123,7 +123,7 @@ const DonorDashBoard = () => {
                         </thead>
                         <tbody>
                             {requests.map((req) => (
-                                <tr key={req._id} className="text-start">
+                                <tr key={req._id} className="text-start bg-base-200">
 
                                     <td>{req.recipientName}</td>
 

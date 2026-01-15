@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLoaderData } from 'react-router';
+import {NavLink, useLoaderData } from 'react-router';
 import { AuthContext } from '../../Authentication/AuthContex';
 import Swal from 'sweetalert2';
 import useAxios from '../../Hooks/UseAxios';
+import { IoPlayBackSharp } from 'react-icons/io5';
 
 const districtsPromise = fetch('/district.json').then(res => res.json())
 const upazilsPromise = fetch('/upazila.json').then(res => res.json())
@@ -39,7 +40,7 @@ const DonationReqEdit = () => {
         });
     };
     return (
-        <div className="my-10 max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <div className="my-10 max-w-4xl mx-auto bg-base-200 p-8 rounded-xl shadow-lg">
             <h2 className="text-3xl font-bold mb-8 text-center">
                 Edit Your <span className="text-primary">Donation</span> Request
             </h2>
@@ -53,7 +54,7 @@ const DonationReqEdit = () => {
                         readOnly
                         defaultValue={userInfo?.name}
                         {...register("requesterName")}
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-base-100"
                     />
                 </div>
 
@@ -64,7 +65,7 @@ const DonationReqEdit = () => {
                         readOnly
                         defaultValue={userInfo?.email}
                         {...register("requesterEmail")}
-                        className="input input-bordered w-full bg-gray-100"
+                        className="input input-bordered w-full bg-base-100"
                     />
                 </div>
 
@@ -175,10 +176,13 @@ const DonationReqEdit = () => {
                     ></textarea>
                 </div>
 
-                <div className="md:col-span-2 flex justify-center">
+                <div className="md:col-span-2 flex justify-center gap-3">
                     <button className='btn btn-primary text-white'>
                         Update Donation Request
                     </button>
+                    <NavLink to='/dashboard/my-donation-requests' className='btn bg-base-300 text-base-100'>
+                        <IoPlayBackSharp /> Go Back
+                    </NavLink>
                 </div>
             </form>
         </div>
