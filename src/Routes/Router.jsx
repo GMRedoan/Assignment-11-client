@@ -24,6 +24,7 @@ import Funding from "../Pages/Funding";
 import FundForm from "../Pages/FundForm";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentCancel from "../Pages/PaymentCancel";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +102,13 @@ export const router = createBrowserRouter([
       element: <PrivateRoutes>
         <PaymentCancel></PaymentCancel>
       </PrivateRoutes>
+      },
+      {
+        path: '/pp',
+
+        element: <PrivateRoutes>
+          <PrivacyPolicy></PrivacyPolicy>
+        </PrivateRoutes>
       }
  ],
   },

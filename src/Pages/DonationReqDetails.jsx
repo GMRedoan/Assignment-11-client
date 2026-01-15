@@ -4,6 +4,7 @@ import { AuthContext } from "../Authentication/AuthContex";
 import useAxios from "../Hooks/UseAxios";
 import { ImCross } from "react-icons/im";
 import Swal from "sweetalert2";
+import { BiDonateBlood } from "react-icons/bi";
 
 const DonationReqDetails = () => {
   const singleReq = useLoaderData()
@@ -42,56 +43,56 @@ const DonationReqDetails = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-base-100 rounded-2xl shadow-xl my-12">
+    <div className="max-w-3xl mx-auto p-8 bg-base-200 rounded-2xl shadow-xl my-12">
       <h2 className="text-3xl font-bold text-center mb-8">
         🩸 Donation <span className="text-primary">Request</span> Details
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Recipient Name</p>
-          <p className="font-semibold">{request.recipientName}</p>
+          <p className="font-semibold text-base-300">Recipient Name</p>
+          <p className="text-accent">{request.recipientName}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Blood Group</p>
+          <p className="font-semibold text-base-300">Blood Group</p>
           <span className="inline-block px-4 py-1 rounded-full bg-red-100 text-red-600 font-bold">
             {request.bloodGroup}
           </span>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">District</p>
-          <p className="font-semibold">{request.recipientDistrict}</p>
+          <p className="font-semibold text-base-300">District</p>
+          <p className="text-accent">{request.recipientDistrict}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Upazila</p>
-          <p className="font-semibold">{request.recipientUpazila}</p>
+          <p className="font-semibold text-base-300">Upazila</p>
+          <p className="text-accent">{request.recipientUpazila}</p>
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <p className="text-sm text-gray-500">Hospital Name</p>
-          <p className="font-semibold">{request.hospitalName}</p>
+          <p className="font-semibold text-base-300">Hospital Name</p>
+          <p className="text-accent">{request.hospitalName}</p>
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <p className="text-sm text-gray-500">Address</p>
-          <p className="font-semibold">{request.addressLine}</p>
+          <p className="font-semibold text-base-300">Address</p>
+          <p className="text-accent">{request.addressLine}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Donation Date</p>
-          <p className="font-semibold">{request.donationDate}</p>
+          <p className="font-semibold text-base-300">Donation Date</p>
+          <p className="text-accent">{request.donationDate}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Donation Time</p>
-          <p className="font-semibold">{request.donationTime}</p>
+          <p className="font-semibold text-base-300">Donation Time</p>
+          <p className="text-accent">{request.donationTime}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">Status</p>
+          <p className="font-semibold text-base-300">Status</p>
           <span
             className={`inline-block px-4 py-1 rounded-full text-sm font-semibold capitalize ${request.status === "pending"
               ? "bg-yellow-100 text-yellow-700"
@@ -107,9 +108,9 @@ const DonationReqDetails = () => {
         </div>
       </div>
 
-      <div className="mt-8 p-5 bg-gray-100 rounded-xl">
-        <p className="text-sm text-gray-500 mb-1">Request Message</p>
-        <p className="font-medium text-gray-800">{request.requestMessage}</p>
+      <div className="mt-8 p-5 bg-base-100 rounded-xl">
+        <p className="font-semibold text-base-300 mb-1">Request Message</p>
+        <p className="font-medium text-accent">{request.requestMessage}</p>
       </div>
 
       <div className="flex justify-center mt-4">
@@ -122,12 +123,12 @@ const DonationReqDetails = () => {
             onClick={() => document.getElementById("my_modal_5").showModal()}
             className="btn btn-primary px-20 text-white"
           >
-            Donate Now
+            Donate Now <BiDonateBlood size={18} />
           </button>
         )}
 
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
+          <div className="modal-box bg-base-200">
             <div>
               <div className="mb-4">
                 <label className="block text-sm font-semibold mb-1">Donor Name</label>
@@ -135,7 +136,7 @@ const DonationReqDetails = () => {
                   type="text"
                   value={userInfo?.name}
                   readOnly
-                  className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                  className="input input-bordered w-full bg-base-100 cursor-not-allowed"
                 />
               </div>
 
@@ -145,7 +146,7 @@ const DonationReqDetails = () => {
                   type="email"
                   value={userInfo?.email}
                   readOnly
-                  className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                  className="input input-bordered w-full bg-base-100 cursor-not-allowed"
                 />
               </div>
             </div>

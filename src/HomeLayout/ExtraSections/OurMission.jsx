@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdMarkEmailRead } from 'react-icons/md';
+import { RiContactsFill } from 'react-icons/ri';
 
 const OurMission = () => {
     return (
@@ -12,24 +14,24 @@ const OurMission = () => {
                         Our Mission
                     </div>
 
-                    <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6">
+                    <h2 className="text-4xl lg:text-5xl font-extrabold text-base-300 mb-6">
                         Changing Lives With Every Drop
                     </h2>
 
-                    <p className="text-gray-600 leading-relaxed text-lg max-w-xl mb-10">
+                    <p className="text-accent leading-relaxed text-lg max-w-xl mb-10">
                         Red Care was founded to improve the availability and safety of blood donations. We work to ensure that every donor is guided through a secure, transparent, and reliable process. With your help, we can reach more patients who depend on timely blood support.
                     </p>
 
                     <div className="flex gap-4">
                         <button onClick={() =>
                             document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" })
-                        } className="btn btn-sm md:btn-md btn-primary text-white py-3 px-8 font-semibold rounded-md hover:bg-secondary transition">
-                            Contact US
+                        } className="btn btn-sm md:btn-md btn-primary text-white font-semibold rounded-md hover:bg-white hover:text-black transition border-0">
+                            Contact US <RiContactsFill size={14} />
                         </button>
                         <button onClick={() =>
                             document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" })
-                        } className="btn btn-sm md:btn-md text-black bg-base-200 py-3 px-8 font-semibold rounded-md hover:bg-black hover:text-white transition">
-                            EMAIL US
+                        } className="text-base-200 btn bg-base-300 font-semibold rounded-md hover:text-primary transition px-6">
+                            Email Us <MdMarkEmailRead size={18} />
                         </button>
                     </div>
                 </div>

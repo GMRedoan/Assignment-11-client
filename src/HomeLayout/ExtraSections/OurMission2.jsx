@@ -21,7 +21,7 @@ const OurMission2 = () => {
                         About Red Care
                     </p>
 
-                    <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                    <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
                         We Believe That <span className="text-primary">Together</span>, We Can Save More Lives
                     </h2>
 
@@ -42,22 +42,22 @@ const OurMission2 = () => {
 
                         <div className="flex items-center gap-2">
                             <FiCheckCircle className="text-green-600 text-2xl" />
-                            <p className="font-medium text-gray-800">Emergency Blood Supply</p>
+                            <p className="font-medium">Emergency Blood Supply</p>
                         </div>
 
                         <div className="flex items-center gap-2">
                             <FiCheckCircle className="text-yellow-600 text-2xl" />
-                            <p className="font-medium text-gray-800">Support for Critical Patients</p>
+                            <p className="font-medium">Support for Critical Patients</p>
                         </div>
 
                         <div className="flex items-center gap-2">
                             <FiCheckCircle className="text-red-500 text-2xl" />
-                            <p className="font-medium text-gray-800">Blood for Mothers & Newborns</p>
+                            <p className="font-medium">Blood for Mothers & Newborns</p>
                         </div>
 
                         <div className="flex items-center gap-2">
                             <FiCheckCircle className="text-green-800 text-2xl" />
-                            <p className="font-medium text-gray-800">Medical & Surgical Needs</p>
+                            <p className="font-medium">Medical & Surgical Needs</p>
                         </div>
                     </div>
 
@@ -68,19 +68,19 @@ const OurMission2 = () => {
                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                         <div className="modal-box">
 
-                            <section className="p-6 bg-base-200">
+                            <section className="p-6 bg-base-100">
                                 <div>
                                     <div className="text-primary font-semibold tracking-[3px] uppercase mb-3 flex items-center gap-2">
                                         <span className="inline-block h-[3px] w-10 bg-primary rounded"></span>
                                         About Us
                                     </div>
 
-                                    <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                                    <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight mb-6">
                                         Dedicated to Providing Reliable & Trusted Services
                                     </h2>
                                     <p className="border-b border-b-gray-300 mb-5"></p>
 
-                                    <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
+                                    <p className="text-lg text-accent leading-relaxed mb-8 max-w-xl">
                                         Our organization was founded with one goal: to provide safe, transparent,
                                         and dependable services that people can trust. We combine expertise,
                                         modern technology, and strong teamwork to deliver solutions that truly

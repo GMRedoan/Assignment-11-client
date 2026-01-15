@@ -26,9 +26,9 @@ const Search = () => {
     }
 
     return (
-        <section className="bg-base-200 py-10 px-6 md:px-16">
+        <section className="bg-base-200 py-16 md:py-26 px-6 md:px-16">
             <title>Search</title>
-            <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <div className="max-w-4xl mx-auto bg-base-100 p-8 rounded-xl shadow-lg">
                 <h2 className="text-3xl font-bold text-center mb-16">
                     Search for <span className='text-primary'>Blood</span> Donors
                 </h2>
@@ -37,7 +37,7 @@ const Search = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-semibold">Blood Group</span>
+                            <span className="label-text font-semibold text-base-300">Blood Group</span>
                         </label>
                         <select {...register('bloodGroup')} required className="select select-bordered w-full" defaultValue="">
                             <option value="" disabled>Select Blood Group</option>
@@ -55,7 +55,7 @@ const Search = () => {
                     {/* DISTRICT */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-semibold">District</span>
+                            <span className="label-text font-semibold text-base-300">District</span>
                         </label>
                         <select {...register('district')} required className="select select-bordered w-full" defaultValue="">
                             <option value="" disabled>Select District</option>
@@ -68,7 +68,7 @@ const Search = () => {
                     {/* UPAZILA */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-semibold">Upazila</span>
+                            <span className="label-text font-semibold text-base-300">Upazila</span>
                         </label>
                         <select {...register('upazila')} className="select select-bordered w-full" defaultValue="">
                             <option value="" disabled>Select Upazila</option>
@@ -110,7 +110,7 @@ const Search = () => {
                                     </tbody>
                                 </table>
                             ) : (
-                                <div className="text-center py-10 text-gray-500 font-medium text-lg">
+                                <div className="text-center py-10 text-accent font-medium text-lg">
                                     Currently No Donor Available
                                 </div>
                             )}

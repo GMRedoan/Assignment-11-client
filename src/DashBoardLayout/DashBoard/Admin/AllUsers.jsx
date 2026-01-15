@@ -147,7 +147,8 @@ const AllUsers = () => {
                     <tbody>
                         {filteredUsers.map((user, index) => (
                             <tr key={user._id} className="hover">
-                                <td>{index+1}</td>
+                                <td>{index+1
+                                }</td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">

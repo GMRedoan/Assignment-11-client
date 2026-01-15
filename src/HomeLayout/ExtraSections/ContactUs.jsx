@@ -15,11 +15,11 @@ const ContactUs = () => {
     return (
         <div id="contact-section" className="w-full py-10 px-4">
             <div className="text-center pb-20">
-                <h1 className="text-4xl md:text-6xl font-bold leading-snug">
+                <h1 className="text-4xl md:text-5xl font-bold leading-snug">
                     Get in <span className="text-primary">Touch</span> With Us
                 </h1>
 
-                <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
+                <p className="mt-6 text-accent max-w-3xl mx-auto">
                     Reach out for inquiries, assistance, or collaboration. We're committed to providing quick and helpful responses.
                 </p>
             </div>
@@ -53,7 +53,7 @@ const ContactUs = () => {
                     </div>
                 </div>
 
-                <div className="bg-white p-10 rounded-xl shadow-md">
+                <div className="bg-base-200 p-10 rounded-xl shadow-md">
                     <form onSubmit={handleContact} className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                         <input

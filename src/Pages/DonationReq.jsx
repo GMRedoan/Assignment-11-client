@@ -23,10 +23,10 @@ const DonationReq = () => {
   return (
     <div className="p-6 pt-10">
       <title>Donation Request</title>
-      <h2 className="text-3xl font-bold mb-2 text-center">
+      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center">
         All <span className="text-primary">Donation</span> Requests
       </h2>
-      <p className="text-gray-600 text-center">
+      <p className="text-accent text-center">
         Explore all pending donation requests submitted by our community. You
         can see details such as recipient, blood group, hospital, and request
         status.
@@ -46,7 +46,7 @@ const DonationReq = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-base-100">
             {pendingRequests.map((req, index) => (
               <tr key={req._id}>
                 <td>{index + 1}</td>

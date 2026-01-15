@@ -1,4 +1,3 @@
-import React from 'react';
 import logo2 from '../assets/logo2.png'
 
 const Loading = () => {
@@ -7,7 +6,7 @@ const Loading = () => {
             <div className='text-4xl md:text-6xl font-semibold flex justify-center items-center'>
                 Red
                 <div className='w-25 md:w-35 animate-bounce'><img src={logo2} alt="" /></div>
-                <span className='text-primary'>Care</span>
+                <span>Care</span>
             </div>
          </div>
     );

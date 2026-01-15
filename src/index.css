@@ -6,18 +6,34 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Light Theme */
 @plugin "daisyui/theme" {
-    name: "light";
-    default: true;
-    --color-primary: #F91617;
-    --color-secondary: #C71818;
-    --color-accent: #706f6f;
-
+  name: "light";
+  default: false;
+  --color-primary:  #F91617;
+  --color-secondary: #C71818;
+  --color-base-100: #FAFAF7;    
+  --color-base-200: #F5F5F0;  
+  --color-base-300: #0A0100;    
+  --color-accent: #706f6f;    
 }
+
+/* Dark Theme */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary:  #F91617;
+  --color-secondary: #C71818;
+  --color-base-100: #1A1A1A;    
+  --color-base-200: #2A2A2A;   
+  --color-base-300: #FFFFFF;    
+  --color-accent: #B0ABAB;     
+}
+
 
 body {
     font-family: "Poppins", sans-serif;
-    @apply bg-base-200
+    @apply bg-base-100
 }
 
 
@@ -27,5 +43,8 @@ body {
 
 
 a.active {
-    @apply bg-primary text-white py-1 px-3 rounded-sm 
+    @apply font-semibold text-primary
+         bg-primary/15 backdrop-blur-md
+         px-2 py-1 rounded-full
+         border border-primary/30; 
 }
