@@ -105,7 +105,7 @@ const Profile = () => {
                 </div>
 
                 {/* Form */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                <div className="flex flex-col-reverse md:flex md:flex-row md:w-150 gap-8 md:gap-16">
 
                     {/* Left Side Form */}
                     <div className="space-y-6 animate-fadeIn delay-100">

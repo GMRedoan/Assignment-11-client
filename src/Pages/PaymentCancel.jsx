@@ -5,8 +5,8 @@ const PaymentCancel = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200">
-            <div className="bg-white shadow-xl rounded-2xl p-10 max-w-md w-full text-center">
+        <div className="min-h-screen flex items-center justify-center bg-base-100">
+            <div className="bg-base-200 shadow-xl rounded-2xl p-10 max-w-md w-full text-center">
 
                  <div className="mx-auto flex items-center justify-center w-16 h-16 rounded-full bg-base-200 mb-6">
                     <svg
@@ -24,11 +24,11 @@ const PaymentCancel = () => {
                     </svg>
                 </div>
 
-                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                 <h2 className="text-2xl font-bold text-base-300 mb-2">
                     Payment Cancelled
                 </h2>
 
-                <p className="text-gray-600 mb-6">
+                <p className="text-accent mb-6">
                     Your payment was cancelled. No money has been charged.
                 </p>
 
@@ -41,7 +41,7 @@ const PaymentCancel = () => {
 
                     <button
                         onClick={() => navigate('/')}
-                        className="w-full border border-gray-300 hover:bg-gray-100 py-2 rounded-lg font-semibold transition">
+                        className="w-full border bg-base-300 py-2 rounded-lg text-base-200 hover:text-primary font-semibold transition">
                         Go to Home
                     </button>
                 </div>

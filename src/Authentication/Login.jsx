@@ -144,7 +144,7 @@ const Login = () => {
                                     <button
                                         type="button"
                                         onClick={fillUser}
-                                        className="btn btn-outline btn-sm w-40"
+                                        className="btn btn-outline btn-sm w-36 md:w-40"
                                     >
                                         Login as User
                                     </button>

@@ -54,32 +54,33 @@ const Navbar = () => {
             <div className="flex md:py-1">
 
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost mt-2 lg:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost text-primary mt-2 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-30 p-2 shadow space-y-2">
-                        <div className='flex items-center gap-1 text-sm '>
+                        className="menu dropdown-content bg-base-200 rounded-box z-1 mt-3 w-34 p-2 shadow space-y-1">
+                            
+                        <div className='flex items-center gap-1 pl-3'>
                             <NavLink to='/'><li>Home</li></NavLink>
                         </div>
-                        <div className='flex items-center gap-1 text-sm'>
-                            <NavLink to='donationReq'><li>Donation Req.</li></NavLink>
+                        <div className='flex items-center gap-1 pl-3'>
+                            <NavLink to='donationReq'><li>Requests</li></NavLink>
                         </div>
-                        <div className='flex items-center gap-1 text-sm'>
+                        <div>
                             <li>  <NavLink to='search'><IoSearch className='w-10' /></NavLink> </li>
                         </div>
                         {
-                            user && <div className='flex items-center gap-1 text-lg'>
+                            user && <div>
                                 <li>  <NavLink to='funding'>Fund</NavLink> </li>
                             </div>
                         }
                         {
-                            user && <div className='flex items-center gap-1 text-lg text-accent'>
+                            user && <div>
                                 <li>  <NavLink to='pp'>Privacy Policy</NavLink> </li>
                             </div>
                         }
-                        <div className='flex items-center gap-1 text-sm'>
+                        <div className='flex items-center gap-1 pl-3'>
                             <NavLink to='blog'><li>Blog</li></NavLink>
                         </div>
                     </ul>
@@ -121,7 +122,7 @@ const Navbar = () => {
                 </ul>
             </nav>
             <div className='flex items-center gap-2'>
-                <div>
+                <div className='mt-2 md:mt-1'>
                     <Theme></Theme>
                 </div>
                 {
@@ -137,9 +138,9 @@ const Navbar = () => {
 
                             <ul
                                 tabIndex={0}
-                                className="dropdown-content menu bg-base-100 rounded-xl shadow-lg border border-primary w-36 py-4">
+                                className="dropdown-content menu bg-base-100 rounded-xl shadow-lg border border-primary w-30 md:w-36 py-2 md:py-4">
                                 <Link to='/dashboard/profile'
-                                    className="font-semibold text-[18px] cursor-pointer pl-2 hover:text-blue-500">Dashboard
+                                    className="font-semibold text-center md:text-[18px] cursor-pointer md:pl-2 hover:text-blue-500">Dashboard
                                 </Link>
 
                                 <div className="divider my-1"></div>
@@ -149,7 +150,6 @@ const Navbar = () => {
                                         className="btn btn-sm btn-primary text-white w-full rounded-lg shadow hover:bg-secondary">Log Out
                                     </button>
                                 </li>
-
                             </ul>
                         </div>
                         :

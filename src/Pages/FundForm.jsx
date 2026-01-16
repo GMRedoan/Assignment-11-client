@@ -36,10 +36,10 @@ const FundForm = () => {
         <div className="min-h-screen flex justify-center items-center px-4">
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="card w-full max-w-md bg-base-100 shadow-xl p-6"
+                className="card w-full max-w-md bg-base-200 shadow-xl p-6"
             >
-                <h2 className="text-2xl font-bold text-center mb-2">Donate Fund</h2>
-                <p className="text-center text-gray-500 mb-6">
+                <h2 className="text-2xl font-bold text-center mb-2"><span className="text-primary">Donate</span> Fund</h2>
+                <p className="text-center text-accent mb-6">
                     Support by contributing funds
                 </p>
 
@@ -52,7 +52,7 @@ const FundForm = () => {
                         {...register("funderName")}
                         defaultValue={user?.name}
                         readOnly
-                        className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
+                        className="input input-bordered bg-base-100 cursor-not-allowed w-full"
                     />
                 </div>
 
@@ -65,7 +65,7 @@ const FundForm = () => {
                         {...register("funderEmail")}
                         defaultValue={user?.email}
                         readOnly
-                        className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
+                        className="input input-bordered bg-base-100 cursor-not-allowed w-full"
                     />
                 </div>
 
@@ -96,7 +96,7 @@ const FundForm = () => {
                         type="date"
                         {...register("fundingDate")}
                         readOnly
-                        className="input input-bordered bg-gray-100 cursor-not-allowed w-full"
+                        className="input input-bordered bg-base-100 cursor-not-allowed w-full"
                     />
                 </div>
 
